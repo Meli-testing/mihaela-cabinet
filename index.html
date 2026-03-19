@@ -121,6 +121,33 @@
     .service-card:nth-child(6)::before { background: var(--teal-light); }
     .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: transparent; }
     .service-icon { font-size: 36px; margin-bottom: 14px; }
+
+    /* ── SERVICE ICON ANIMATIONS ── */
+    .svc-icon { width: 72px; height: 72px; margin-bottom: 16px; }
+    /* bounce */
+    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+    /* wiggle */
+    @keyframes wiggle { 0%,100%{transform:rotate(0deg)} 25%{transform:rotate(-8deg)} 75%{transform:rotate(8deg)} }
+    /* pulse */
+    @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.08)} }
+    /* float */
+    @keyframes floatUp { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+    /* wave */
+    @keyframes wave { 0%{d:path("M4 18 Q16 10 28 18 Q40 26 52 18 Q64 10 68 14")} 50%{d:path("M4 14 Q16 22 28 14 Q40 6 52 14 Q64 22 68 18")} 100%{d:path("M4 18 Q16 10 28 18 Q40 26 52 18 Q64 10 68 14")} }
+    /* brush stroke */
+    @keyframes brushStroke { 0%{stroke-dashoffset:60} 100%{stroke-dashoffset:0} }
+    /* spin slow */
+    @keyframes spinSlow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+    /* heart beat */
+    @keyframes heartBeat { 0%,100%{transform:scale(1)} 14%{transform:scale(1.15)} 28%{transform:scale(1)} 42%{transform:scale(1.1)} 70%{transform:scale(1)} }
+    @media (prefers-reduced-motion: no-preference) {
+      .anim-bounce { animation: bounce 2s ease-in-out infinite; }
+      .anim-wiggle { animation: wiggle 2.5s ease-in-out infinite; }
+      .anim-pulse  { animation: pulse 2s ease-in-out infinite; }
+      .anim-float  { animation: floatUp 3s ease-in-out infinite; }
+      .anim-spin   { animation: spinSlow 8s linear infinite; }
+      .anim-heart  { animation: heartBeat 2s ease-in-out infinite; }
+    }
     .service-card h3 { font-family: 'Nunito', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 8px; }
     .service-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
 
@@ -441,12 +468,133 @@
       <p class="section-sub"><span data-ro>Fiecare activitate este adaptată nevoilor și preferințelor copilului dvs.</span><span data-en style="display:none">Every activity is adapted to your child's needs and preferences.</span></p>
     </div>
     <div class="services-grid">
-      <div class="service-card fade-in"><div class="service-icon">🎭</div><h3><span data-ro>Terapie prin joc</span><span data-en style="display:none">Play therapy</span></h3><p><span data-ro>Structurată și liberă — copilul învață prin activitățile care îi fac plăcere, în propriul ritm.</span><span data-en style="display:none">Structured and free play — children learn through activities they enjoy, at their own pace.</span></p></div>
-      <div class="service-card fade-in"><div class="service-icon">🌊</div><h3><span data-ro>Integrare senzorială</span><span data-en style="display:none">Sensory integration</span></h3><p><span data-ro>Activități care ajută copilul să proceseze și să răspundă la stimulii din mediu.</span><span data-en style="display:none">Activities that help children process and respond to environmental stimuli.</span></p></div>
-      <div class="service-card fade-in"><div class="service-icon">📖</div><h3><span data-ro>Cartonașe vizuale (PECS)</span><span data-en style="display:none">Visual cards (PECS)</span></h3><p><span data-ro>Sistem structurat de comunicare prin imagini — esențial pentru copiii cu dificultăți de limbaj.</span><span data-en style="display:none">Structured image-based communication — essential for children with language difficulties.</span></p></div>
-      <div class="service-card fade-in"><div class="service-icon">🎨</div><h3><span data-ro>Art-terapie</span><span data-en style="display:none">Art therapy</span></h3><p><span data-ro>Activități creative care facilitează exprimarea emoțiilor și dezvoltarea motricității fine.</span><span data-en style="display:none">Creative activities that facilitate emotional expression and fine motor development.</span></p></div>
-      <div class="service-card fade-in"><div class="service-icon">🏠</div><h3><span data-ro>Joc de rol</span><span data-en style="display:none">Role play</span></h3><p><span data-ro>Bucătărie, povești, LEGO, construcții — exersarea scenariilor din viața reală, în siguranță.</span><span data-en style="display:none">Kitchen, stories, LEGO, construction — practising real-life scenarios in a safe space.</span></p></div>
-      <div class="service-card fade-in"><div class="service-icon">👨‍👩‍👧</div><h3><span data-ro>Sprijin pentru părinți</span><span data-en style="display:none">Parent support</span></h3><p><span data-ro>Ghidare, sfaturi practice și parteneriat real cu familia pentru a continua progresul acasă.</span><span data-en style="display:none">Guidance, practical advice and real partnership with the family to continue progress at home.</span></p></div>
+
+      <!-- 1 PLAY THERAPY — bouncing ball + blocks -->
+      <div class="service-card fade-in">
+        <svg class="svc-icon" viewBox="0 0 72 72" fill="none">
+          <!-- coloured blocks -->
+          <rect x="6" y="44" width="18" height="18" rx="4" fill="#52C2B5"/>
+          <rect x="28" y="50" width="14" height="12" rx="3" fill="#F4845F"/>
+          <rect x="46" y="46" width="16" height="16" rx="4" fill="#9B89C4"/>
+          <!-- bouncing ball -->
+          <circle cx="36" cy="22" r="12" fill="#FFD166" class="anim-bounce"/>
+          <circle cx="32" cy="18" r="3" fill="white" opacity="0.6"/>
+        </svg>
+        <h3><span data-ro>Terapie prin joc</span><span data-en style="display:none">Play therapy</span></h3>
+        <p><span data-ro>Structurată și liberă — copilul învață prin activitățile care îi fac plăcere, în propriul ritm.</span><span data-en style="display:none">Structured and free play — children learn through activities they enjoy, at their own pace.</span></p>
+      </div>
+
+      <!-- 2 SENSORY — ripple waves -->
+      <div class="service-card fade-in">
+        <svg class="svc-icon" viewBox="0 0 72 72" fill="none">
+          <!-- hand -->
+          <ellipse cx="36" cy="52" rx="14" ry="8" fill="#F4845F" opacity="0.2"/>
+          <rect x="29" y="30" width="6" height="22" rx="3" fill="#F4845F"/>
+          <rect x="37" y="26" width="6" height="26" rx="3" fill="#F4845F"/>
+          <rect x="21" y="32" width="6" height="20" rx="3" fill="#F4845F"/>
+          <rect x="45" y="32" width="6" height="20" rx="3" fill="#F4845F"/>
+          <!-- sparkles pulsing -->
+          <circle cx="18" cy="16" r="4" fill="#52C2B5" class="anim-pulse"/>
+          <circle cx="54" cy="12" r="3" fill="#FFD166" class="anim-pulse" style="animation-delay:0.4s"/>
+          <circle cx="36" cy="10" r="3" fill="#9B89C4" class="anim-pulse" style="animation-delay:0.8s"/>
+          <circle cx="60" cy="28" r="2.5" fill="#F4845F" class="anim-pulse" style="animation-delay:1.2s"/>
+          <circle cx="12" cy="30" r="2.5" fill="#FFD166" class="anim-pulse" style="animation-delay:0.6s"/>
+        </svg>
+        <h3><span data-ro>Integrare senzorială</span><span data-en style="display:none">Sensory integration</span></h3>
+        <p><span data-ro>Activități care ajută copilul să proceseze și să răspundă la stimulii din mediu.</span><span data-en style="display:none">Activities that help children process and respond to environmental stimuli.</span></p>
+      </div>
+
+      <!-- 3 VISUAL CARDS — cards fanning + floating star -->
+      <div class="service-card fade-in">
+        <svg class="svc-icon" viewBox="0 0 72 72" fill="none">
+          <!-- back cards -->
+          <rect x="8" y="20" width="32" height="40" rx="5" fill="#E8D5F5" transform="rotate(-10 8 20)"/>
+          <rect x="14" y="18" width="32" height="40" rx="5" fill="#C5B3E8" transform="rotate(-4 14 18)"/>
+          <!-- front card -->
+          <rect x="20" y="16" width="32" height="42" rx="5" fill="white" stroke="#9B89C4" stroke-width="1.5"/>
+          <!-- sun drawing on card -->
+          <circle cx="36" cy="30" r="6" fill="#FFD166"/>
+          <line x1="36" y1="20" x2="36" y2="17" stroke="#FFD166" stroke-width="2" stroke-linecap="round"/>
+          <line x1="44" y1="22" x2="46" y2="20" stroke="#FFD166" stroke-width="2" stroke-linecap="round"/>
+          <line x1="46" y1="30" x2="49" y2="30" stroke="#FFD166" stroke-width="2" stroke-linecap="round"/>
+          <!-- word lines -->
+          <rect x="26" y="40" width="20" height="3" rx="1.5" fill="#E8D5F5"/>
+          <rect x="29" y="46" width="14" height="3" rx="1.5" fill="#E8D5F5"/>
+          <!-- floating star -->
+          <polygon points="58,10 60,16 66,16 61,20 63,26 58,22 53,26 55,20 50,16 56,16" fill="#FFD166" class="anim-float"/>
+        </svg>
+        <h3><span data-ro>Cartonașe vizuale (PECS)</span><span data-en style="display:none">Visual cards (PECS)</span></h3>
+        <p><span data-ro>Sistem structurat de comunicare prin imagini — esențial pentru copiii cu dificultăți de limbaj.</span><span data-en style="display:none">Structured image-based communication — essential for children with language difficulties.</span></p>
+      </div>
+
+      <!-- 4 ART THERAPY — paintbrush + colourful splashes -->
+      <div class="service-card fade-in">
+        <svg class="svc-icon" viewBox="0 0 72 72" fill="none">
+          <!-- paint palette -->
+          <ellipse cx="34" cy="44" rx="22" ry="16" fill="#FFF3E0"/>
+          <ellipse cx="34" cy="44" rx="22" ry="16" fill="none" stroke="#F4845F" stroke-width="1.5"/>
+          <circle cx="22" cy="42" r="5" fill="#F4845F"/>
+          <circle cx="34" cy="56" r="5" fill="#52C2B5"/>
+          <circle cx="46" cy="42" r="5" fill="#9B89C4"/>
+          <circle cx="42" cy="52" r="4" fill="#FFD166"/>
+          <circle cx="26" cy="52" r="4" fill="#52B788"/>
+          <!-- thumb hole -->
+          <ellipse cx="36" cy="38" rx="4" ry="5" fill="#FFF3E0" stroke="#F4845F" stroke-width="1"/>
+          <!-- paintbrush wiggling -->
+          <g class="anim-wiggle" style="transform-origin:52px 36px">
+            <rect x="48" y="10" width="8" height="26" rx="4" fill="#8B6914"/>
+            <ellipse cx="52" cy="36" rx="5" ry="7" fill="#FFD166"/>
+          </g>
+        </svg>
+        <h3><span data-ro>Art-terapie</span><span data-en style="display:none">Art therapy</span></h3>
+        <p><span data-ro>Activități creative care facilitează exprimarea emoțiilor și dezvoltarea motricității fine.</span><span data-en style="display:none">Creative activities that facilitate emotional expression and fine motor development.</span></p>
+      </div>
+
+      <!-- 5 ROLE PLAY — cosy house with smoke puffing -->
+      <div class="service-card fade-in">
+        <svg class="svc-icon" viewBox="0 0 72 72" fill="none">
+          <!-- house body -->
+          <rect x="12" y="34" width="48" height="30" rx="3" fill="#52C2B5"/>
+          <!-- roof -->
+          <polygon points="8,36 36,10 64,36" fill="#2A9D8F"/>
+          <!-- door -->
+          <rect x="28" y="46" width="16" height="18" rx="3" fill="#8B6914"/>
+          <circle cx="40" cy="55" r="2" fill="#FFD166"/>
+          <!-- windows -->
+          <rect x="14" y="42" width="10" height="10" rx="2" fill="#FFF3E0"/>
+          <rect x="48" y="42" width="10" height="10" rx="2" fill="#FFF3E0"/>
+          <!-- chimney -->
+          <rect x="44" y="14" width="8" height="14" rx="2" fill="#F4845F"/>
+          <!-- smoke puffs floating -->
+          <circle cx="48" cy="10" r="4" fill="#E0E0E0" opacity="0.8" class="anim-float"/>
+          <circle cx="52" cy="5" r="3" fill="#E0E0E0" opacity="0.5" class="anim-float" style="animation-delay:0.6s"/>
+          <circle cx="44" cy="3" r="2.5" fill="#E0E0E0" opacity="0.3" class="anim-float" style="animation-delay:1.2s"/>
+        </svg>
+        <h3><span data-ro>Joc de rol</span><span data-en style="display:none">Role play</span></h3>
+        <p><span data-ro>Bucătărie, povești, LEGO, construcții — exersarea scenariilor din viața reală, în siguranță.</span><span data-en style="display:none">Kitchen, stories, LEGO, construction — practising real-life scenarios in a safe space.</span></p>
+      </div>
+
+      <!-- 6 PARENT SUPPORT — family with rising hearts -->
+      <div class="service-card fade-in">
+        <svg class="svc-icon" viewBox="0 0 72 72" fill="none">
+          <!-- parent left -->
+          <circle cx="22" cy="24" r="9" fill="#F4845F"/>
+          <rect x="12" y="34" width="20" height="22" rx="8" fill="#F4845F"/>
+          <!-- parent right -->
+          <circle cx="50" cy="24" r="9" fill="#52C2B5"/>
+          <rect x="40" y="34" width="20" height="22" rx="8" fill="#52C2B5"/>
+          <!-- child -->
+          <circle cx="36" cy="32" r="7" fill="#FFD166"/>
+          <rect x="28" y="40" width="16" height="18" rx="7" fill="#FFD166"/>
+          <!-- floating hearts -->
+          <path d="M34 16 C34 13 30 11 30 14 C30 16 34 20 34 20 C34 20 38 16 38 14 C38 11 34 13 34 16Z" fill="#F4845F" class="anim-float"/>
+          <path d="M54 10 C54 8 51 7 51 9 C51 11 54 14 54 14 C54 14 57 11 57 9 C57 7 54 8 54 10Z" fill="#52C2B5" class="anim-float" style="animation-delay:0.7s"/>
+          <path d="M18 10 C18 8 15 7 15 9 C15 11 18 14 18 14 C18 14 21 11 21 9 C21 7 18 8 18 10Z" fill="#FFD166" class="anim-float" style="animation-delay:1.3s"/>
+        </svg>
+        <h3><span data-ro>Sprijin pentru părinți</span><span data-en style="display:none">Parent support</span></h3>
+        <p><span data-ro>Ghidare, sfaturi practice și parteneriat real cu familia pentru a continua progresul acasă.</span><span data-en style="display:none">Guidance, practical advice and real partnership with the family to continue progress at home.</span></p>
+      </div>
+
     </div>
   </div>
 </section>
@@ -470,7 +618,32 @@
 </section>
 
 <!-- REVIEWS -->
+<section id="reviews">
+  <div class="container">
+    <div class="section-header centered fade-in">
+      <div class="section-tag"><span data-ro>Ce spun familiile</span><span data-en style="display:none">What families say</span></div>
+      <h2 class="section-title"><span data-ro>Recenzii reale</span><span data-en style="display:none">Real reviews</span></h2>
+      <p class="section-sub"><span data-ro>Cuvintele familiilor cu care lucrăm ne motivează în fiecare zi.</span><span data-en style="display:none">The words of the families we work with motivate us every day.</span></p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card fade-in"><div class="review-stars">★★★★★</div><p class="review-text">"Mihaela Radu se ocupă de fetița mea de la vârsta de 2 ani. Era un copil care nu coopera. Cu răbdare multă a reușit să creeze o relație de încredere — progresul este cu adevărat uimitor!"</p><div class="review-author"><div class="review-avatar" style="background:var(--orange)">RD</div><div><div class="review-name">Rada Donos</div><div class="review-date">Februarie 2025</div></div></div></div>
+      <div class="review-card fade-in"><div class="review-stars">★★★★★</div><p class="review-text">"A început să lucreze cu el la 2 ani și jumătate, nu vorbea și avea stereotipii. Cu răbdare infinită a reușit o transformare incredibilă. Astăzi este un copil comunicativ și perfect integrat."</p><div class="review-author"><div class="review-avatar" style="background:var(--lavender)">CB</div><div><div class="review-name">Cristina Bute</div><div class="review-date">Februarie 2025</div></div></div></div>
+      <div class="review-card fade-in"><div class="review-stars">★★★★★</div><p class="review-text">"De nota 10 plus! Mulțumim pentru sprijin și ajutor. Sunt profund recunoscătoare pentru implicarea și dedicarea doamnei Mihaela."</p><div class="review-author"><div class="review-avatar" style="background:var(--teal)">MC</div><div><div class="review-name">Mihaela Croitoru</div><div class="review-date">Februarie 2025</div></div></div></div>
+      <div class="review-card fade-in"><div class="review-stars">★★★★★</div><p class="review-text">"Recomand cu încredere! Devotament și implicare maximă! Sunt super mulțumită de serviciile oferite."</p><div class="review-author"><div class="review-avatar" style="background:var(--green)">AD</div><div><div class="review-name">Ana Maria David</div><div class="review-date">Decembrie 2024</div></div></div></div>
+      <div class="review-card fade-in"><div class="review-stars">★★★★★</div><p class="review-text">"Recomand cu încredere! Cea mai frumoasă echipă, implicare 100%! Mulțumim pentru tot!"</p><div class="review-author"><div class="review-avatar" style="background:var(--pink)">SA</div><div><div class="review-name">Stan Alexandra</div><div class="review-date">Noiembrie 2024</div></div></div></div>
+      <div class="review-card fade-in"><div class="review-stars">★★★★★</div><p class="review-text">"Recomand cu toată inima. Mihaela este un psiholog care nu se teme de provocări, dedicat lucrului cu copii, stabilește cele mai bune căi de vindecare emoțională sau traumatologică. Este un om corect și loial."</p><div class="review-author"><div class="review-avatar" style="background:var(--teal-light)">MP</div><div><div class="review-name">Monica Pricope</div><div class="review-date">Octombrie 2020</div></div></div></div>
+      <div class="review-card fade-in"><div class="review-stars">★★★★★</div><p class="review-text">"Recomand! Este profi, are foarte multă răbdare și iubește ceea ce face! Bravo! 👏"</p><div class="review-author"><div class="review-avatar" style="background:var(--orange)">GZ</div><div><div class="review-name">Georgiana Zamfirescu</div><div class="review-date">Aprilie 2020</div></div></div></div>
+      <div class="review-card fade-in" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:var(--cream-dark);gap:14px;">
+        <div style="font-size:36px;">⭐</div>
+        <h3 style="font-family:'Nunito',sans-serif;font-size:18px;font-weight:700;"><span data-ro>100% recomandat</span><span data-en style="display:none">100% recommended</span></h3>
+        <p style="font-size:14px;color:var(--muted);"><span data-ro>10 recenzii pe Facebook · Toate de 5 stele</span><span data-en style="display:none">10 reviews on Facebook · All 5 stars</span></p>
+        <a href="https://www.facebook.com/share/17mWfsakss/" target="_blank" rel="noopener" class="btn-primary" style="font-size:13px;padding:10px 20px;"><span data-ro>Citește pe Facebook</span><span data-en style="display:none">Read on Facebook</span></a>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- GALLERY -->
 <section id="gallery">
   <div class="container">
     <div class="section-header centered fade-in">
@@ -490,34 +663,6 @@
 
   </div>
 </section>
-
-
-<section id="reviews">
-  <div class="container">
-    <div class="section-header centered fade-in">
-      <div class="section-tag"><span data-ro>Ce spun familiile</span><span data-en style="display:none">What families say</span></div>
-      <h2 class="section-title"><span data-ro>Recenzii reale</span><span data-en style="display:none">Real reviews</span></h2>
-      <p class="section-sub"><span data-ro>Cuvintele familiilor cu care lucrăm ne motivează în fiecare zi.</span><span data-en style="display:none">The words of the families we work with motivate us every day.</span></p>
-    </div>
-    <div class="reviews-grid">
-      <div class="review-card fade-in"><div class="review-stars">★★★★★</div><p class="review-text">"Mihaela Radu se ocupă de fetița mea de la vârsta de 2 ani. Era un copil care nu coopera. Cu răbdare multă a reușit să creeze o relație de încredere — progresul este cu adevărat uimitor!"</p><div class="review-author"><div class="review-avatar" style="background:var(--orange)">RD</div><div><div class="review-name">Rada Donos</div></div></div></div>
-      <div class="review-card fade-in"><div class="review-stars">★★★★★</div><p class="review-text">"A început să lucreze cu el la 2 ani și jumătate, nu vorbea și avea stereotipii. Cu răbdare infinită a reușit o transformare incredibilă. Astăzi este un copil comunicativ și perfect integrat."</p><div class="review-author"><div class="review-avatar" style="background:var(--lavender)">CB</div><div><div class="review-name">Cristina Bute</div></div></div></div>
-      <div class="review-card fade-in"><div class="review-stars">★★★★★</div><p class="review-text">"De nota 10 plus! Mulțumim pentru sprijin și ajutor. Sunt profund recunoscătoare pentru implicarea și dedicarea doamnei Mihaela."</p><div class="review-author"><div class="review-avatar" style="background:var(--teal)">MC</div><div><div class="review-name">Mihaela Croitoru</div></div></div></div>
-      <div class="review-card fade-in"><div class="review-stars">★★★★★</div><p class="review-text">"Recomand cu încredere! Devotament și implicare maximă! Sunt super mulțumită de serviciile oferite."</p><div class="review-author"><div class="review-avatar" style="background:var(--green)">AD</div><div><div class="review-name">Ana Maria David</div></div></div></div>
-      <div class="review-card fade-in"><div class="review-stars">★★★★★</div><p class="review-text">"Recomand cu încredere! Cea mai frumoasă echipă, implicare 100%! Mulțumim pentru tot!"</p><div class="review-author"><div class="review-avatar" style="background:var(--pink)">SA</div><div><div class="review-name">Stan Alexandra</div></div></div></div>
-      <div class="review-card fade-in"><div class="review-stars">★★★★★</div><p class="review-text">"Recomand cu toată inima. Mihaela este un psiholog care nu se teme de provocări, dedicat lucrului cu copii, stabilește cele mai bune căi de vindecare emoțională sau traumatologică. Este un om corect și loial."</p><div class="review-author"><div class="review-avatar" style="background:var(--teal-light)">MP</div><div><div class="review-name">Monica Pricope</div><div class="review-date">Octombrie 2020</div></div></div></div>
-      <div class="review-card fade-in"><div class="review-stars">★★★★★</div><p class="review-text">"Recomand! Este profi, are foarte multă răbdare și iubește ceea ce face! Bravo! 👏"</p><div class="review-author"><div class="review-avatar" style="background:var(--orange)">GZ</div><div><div class="review-name">Georgiana Zamfirescu</div></div></div></div>
-      <div class="review-card fade-in"><div class="review-stars">★★★★★</div><p class="review-text">„Recomand cu încredere. Ești the best Mihaela <span style="font-style:normal">🤩</span> mulțumim din suflet pentru tot ceea ce faci pentru noi <span style="font-style:normal">🤩😍🤩</span>"</p></p><div class="review-author"><div class="review-avatar" style="background:var(--pink)">II</div><div><div class="review-name">Irina INaa</div></div></div></div>
-      <div class="review-card fade-in" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:var(--cream-dark);gap:14px;">
-        <div style="font-size:36px;">⭐</div>
-        <h3 style="font-family:'Nunito',sans-serif;font-size:18px;font-weight:700;"><span data-ro>100% recomandat</span><span data-en style="display:none">100% recommended</span></h3>
-        <p style="font-size:14px;color:var(--muted);"><span data-ro>10 recenzii pe Facebook · Toate de 5 stele</span><span data-en style="display:none">10 reviews on Facebook · All 5 stars</span></p>
-        <a href="https://www.facebook.com/share/17mWfsakss/" target="_blank" rel="noopener" class="btn-primary" style="font-size:13px;padding:10px 20px;"><span data-ro>Citește pe Facebook</span><span data-en style="display:none">Read on Facebook</span></a>
-      </div>
-    </div>
-  </div>
-</section>
-
 
 <!-- CONTACT -->
 <section id="contact">
