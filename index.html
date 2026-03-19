@@ -218,16 +218,16 @@
     .btn-reject { background: transparent; color: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.3); padding: 9px 18px; border-radius: 20px; cursor: pointer; font-family: 'Nunito', sans-serif; font-size: 13px; }
 
     /* FLOATING BUTTONS */
-    #waFloat { position: fixed; bottom: 86px; right: 22px; z-index: 200; width: 52px; height: 52px; border-radius: 50%; background: #25D366; color: white; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 18px rgba(37,211,102,0.5); transition: all 0.2s; cursor: pointer; }
+    #waFloat { position: fixed; bottom: 106px; right: 22px; z-index: 200; width: 52px; height: 52px; border-radius: 50%; background: #25D366; color: white; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 18px rgba(37,211,102,0.5); transition: all 0.2s; cursor: pointer; }
     #waFloat:hover { transform: scale(1.1); }
     #waFloat svg { width: 26px; height: 26px; fill: white; }
-    #chatToggle { position: fixed; bottom: 22px; right: 22px; z-index: 200; width: 52px; height: 52px; border-radius: 50%; background: var(--teal); color: white; border: none; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 18px rgba(42,157,143,0.5); cursor: pointer; transition: all 0.2s; }
+    #chatToggle { position: fixed; bottom: 42px; right: 22px; z-index: 200; width: 52px; height: 52px; border-radius: 50%; background: var(--teal); color: white; border: none; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 18px rgba(42,157,143,0.5); cursor: pointer; transition: all 0.2s; }
     #chatToggle:hover { transform: scale(1.1); background: var(--teal-dark); }
     #chatToggle svg { width: 24px; height: 24px; fill: white; transition: transform 0.3s; }
     #chatToggle.open svg { transform: rotate(45deg); }
 
     /* CHATBOT WINDOW */
-    #chatWindow { position: fixed; bottom: 86px; right: 22px; z-index: 199; width: 340px; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.18); display: none; flex-direction: column; max-height: 520px; animation: slideUp 0.3s ease; }
+    #chatWindow { position: fixed; bottom: 106px; right: 22px; z-index: 199; width: 340px; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.18); display: none; flex-direction: column; max-height: 520px; animation: slideUp 0.3s ease; }
     @keyframes slideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
     #chatWindow.open { display: flex; }
     .chat-header { background: var(--teal); color: white; padding: 16px 18px; display: flex; align-items: center; gap: 12px; }
@@ -271,7 +271,7 @@
       .services-grid{grid-template-columns:1fr}
       .hero{padding:72px 24px 56px}
       .footer-top{grid-template-columns:1fr}
-      #chatWindow{width:calc(100vw - 28px);right:14px;bottom:80px}
+      #chatWindow{width:calc(100vw - 28px);right:14px;bottom:100px}
     }
   </style>
 </head>
@@ -665,7 +665,7 @@
     </div>
   </div>
   <div class="chat-messages" id="chatMessages">
-    <div class="msg bot" id="chatGreeting">Bună! 👋 Sunt asistentul virtual al Cabinetului de Psihologie Radu Mihaela Cristina. Cu ce vă pot ajuta? 💛</div>
+    <div class="msg bot" id="chatGreeting">Bună! 👋 Sunt asistentul virtual al Cabinetului doamnei Mihaela Radu. Cu ce vă pot ajuta? 💛</div>
   </div>
   <div class="chat-gdpr">
     <span data-ro>Conversațiile nu sunt stocate. </span>
@@ -702,7 +702,7 @@ function setLang(lang) {
   if (ci) ci.placeholder = lang === 'ro' ? 'Scrieți un mesaj...' : 'Type a message...';
   const cg = document.getElementById('chatGreeting');
   if (cg) cg.textContent = lang === 'ro'
-    ? 'Bună! 👋 Sunt asistentul virtual al Cabinetului de Psihologie Radu Mihaela Cristina. Cu ce vă pot ajuta? 💛'
+    ? 'Bună! 👋 Sunt asistentul virtual al Cabinetului doamnei Mihaela Radu. Cu ce vă pot ajuta? 💛'
     : 'Hello! 👋 I\'m the virtual assistant for Mihaela Radu\'s Psychology Cabinet. How can I help you? 💛';
 }
 
