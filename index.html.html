@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Keukens Cardon & Zonen | Keukens op maat – Nieuwerkerken-Aalst</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --brown:   #2c1810;
+      --brown2:  #4a2c1a;
+      --gold:    #c9a45a;
+      --gold2:   #e8c87a;
+      --cream:   #faf6f0;
+      --cream2:  #f0e8dc;
+      --gray:    #888;
+      --text:    #1a1a1a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--cream2); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(44,24,16,0.97);
+      backdrop-filter: blur(10px);
+      padding: 0 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 70px;
+      border-bottom: 1px solid rgba(201,164,90,0.2);
+      transition: all 0.3s;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      line-height: 1;
+    }
+    .nav-logo span {
+      display: block;
+      color: rgba(255,255,255,0.5);
+      font-size: 10px;
+      font-family: 'Lato', sans-serif;
+      letter-spacing: 3px;
+      font-weight: 300;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      font-weight: 400;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold) !important;
+      color: var(--brown) !important;
+      padding: 9px 20px !important;
+      border-radius: 4px !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.5px !important;
+    }
+    .nav-cta:hover { background: var(--gold2) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      height: 100vh; min-height: 700px;
+      background:
+        linear-gradient(to bottom, rgba(44,24,16,0.7) 0%, rgba(44,24,16,0.4) 50%, rgba(44,24,16,0.75) 100%),
+        url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1600&q=85') center/cover no-repeat;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 120px;
+      background: linear-gradient(to bottom, transparent, var(--cream));
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 750px; }
+    .hero-tag {
+      display: inline-block;
+      border: 1px solid rgba(201,164,90,0.6);
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 7px 18px;
+      border-radius: 30px;
+      margin-bottom: 28px;
+      animation: fadeUp 0.8s ease both;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(38px, 6vw, 68px);
+      color: white;
+      line-height: 1.15;
+      margin-bottom: 22px;
+      font-weight: 800;
+      animation: fadeUp 0.8s 0.15s ease both;
+    }
+    .hero h1 em { color: var(--gold); font-style: italic; }
+    .hero p {
+      color: rgba(255,255,255,0.97);
+      font-size: 17px;
+      line-height: 1.8;
+      margin-bottom: 38px;
+      font-weight: 400;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+    .hero-btns {
+      display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.45s ease both;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--brown);
+      border: none; border-radius: 5px;
+      padding: 15px 32px; font-size: 14px;
+      font-weight: 700; cursor: pointer;
+      font-family: 'Lato', sans-serif;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: all 0.2s;
+      text-decoration: none; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,164,90,0.35); }
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255,255,255,0.6);
+      border-radius: 5px;
+      padding: 13px 30px; font-size: 14px;
+      cursor: pointer; font-family: 'Lato', sans-serif;
+      letter-spacing: 0.5px; text-transform: uppercase;
+      transition: all 0.2s; text-decoration: none; display: inline-block;
+    }
+    .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.1); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--brown);
+      display: grid; grid-template-columns: repeat(4,1fr);
+    }
+    .stat {
+      padding: 28px 20px; text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px; color: var(--gold);
+      font-weight: 800; line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label { color: rgba(255,255,255,0.55); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 90px 40px; }
+    .section-tag {
+      font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 12px; display: block;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 42px);
+      color: var(--brown); line-height: 1.2;
+      margin-bottom: 16px; font-weight: 800;
+    }
+    .section-sub {
+      color: var(--gray); font-size: 16px; line-height: 1.8;
+      font-weight: 300; max-width: 560px;
+    }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    /* ── ABOUT ── */
+    .about { background: white; }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center;
+    }
+    .about-img {
+      border-radius: 12px; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(44,24,16,0.2);
+      position: relative;
+    }
+    .about-img img { width: 100%; height: 420px; object-fit: cover; display: block; }
+    .about-img-badge {
+      position: absolute; bottom: 24px; left: 24px;
+      background: var(--gold);
+      color: var(--brown);
+      padding: 14px 20px;
+      border-radius: 8px;
+      font-family: 'Playfair Display', serif;
+      font-size: 13px; font-weight: 700;
+    }
+    .about-img-badge strong { display: block; font-size: 28px; line-height: 1; }
+    .about-features { margin-top: 32px; display: flex; flex-direction: column; gap: 16px; }
+    .about-feature { display: flex; gap: 14px; align-items: flex-start; }
+    .about-feature-icon {
+      width: 42px; height: 42px; flex-shrink: 0;
+      background: var(--cream2); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .about-feature h4 { font-size: 15px; color: var(--brown); font-weight: 700; margin-bottom: 4px; }
+    .about-feature p { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+    /* ── KITCHENS ── */
+    .kitchens { background: var(--cream); }
+    .kitchens-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; }
+    .kitchen-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .kitchen-card {
+      border-radius: 12px; overflow: hidden;
+      background: white;
+      box-shadow: 0 4px 20px rgba(44,24,16,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .kitchen-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(44,24,16,0.15); }
+    .kitchen-card:first-child { grid-row: span 2; }
+    .kitchen-img {
+      width: 100%; object-fit: cover; display: block;
+      transition: transform 0.5s;
+    }
+    .kitchen-card:first-child .kitchen-img { height: 520px; }
+    .kitchen-img-wrap { overflow: hidden; }
+    .kitchen-card:not(:first-child) .kitchen-img { height: 220px; }
+    .kitchen-card:hover .kitchen-img { transform: scale(1.04); }
+    .kitchen-body { padding: 22px 24px; }
+    .kitchen-style {
+      font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 6px; display: block;
+    }
+    .kitchen-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px; color: var(--brown); margin-bottom: 8px;
+    }
+    .kitchen-body p { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+    /* ── MATERIALS ── */
+    .materials { background: var(--brown); }
+    .materials .section-title { color: white; }
+    .materials .section-sub { color: rgba(255,255,255,0.6); }
+    .materials .section-tag { color: var(--gold); }
+    .materials-grid {
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-top: 48px;
+    }
+    .material-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(201,164,90,0.2);
+      border-radius: 10px; padding: 24px 20px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .material-card:hover {
+      background: rgba(201,164,90,0.12);
+      border-color: rgba(201,164,90,0.5);
+      transform: translateY(-4px);
+    }
+    .material-card[onclick]:hover {
+      background: rgba(201,164,90,0.25) !important;
+      border-color: rgba(201,164,90,0.8) !important;
+      box-shadow: 0 0 20px rgba(201,164,90,0.3);
+    }
+    .material-icon { font-size: 28px; margin-bottom: 12px; }
+    .material-card h4 { color: white; font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+    .material-card p { color: rgba(255,255,255,0.5); font-size: 12px; line-height: 1.5; }
+
+    /* ── SERVICES ── */
+    .services { background: white; }
+    .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 48px; }
+    .service-card {
+      border: 1px solid var(--cream2);
+      border-radius: 12px; padding: 32px 28px;
+      transition: all 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--gold); transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .service-card:hover { border-color: var(--gold); box-shadow: 0 8px 32px rgba(44,24,16,0.1); transform: translateY(-4px); }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-icon { font-size: 32px; margin-bottom: 18px; }
+    .service-card h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--brown); margin-bottom: 10px; }
+    .service-card p { font-size: 13px; color: var(--gray); line-height: 1.7; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--cream2); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px; }
+    .testimonial {
+      background: white; border-radius: 12px; padding: 28px;
+      box-shadow: 0 2px 12px rgba(44,24,16,0.06);
+    }
+    .testimonial-stars { color: var(--gold); font-size: 14px; margin-bottom: 14px; letter-spacing: 2px; }
+    .testimonial p { font-size: 14px; color: #555; line-height: 1.7; font-style: italic; margin-bottom: 18px; }
+    .testimonial-author { display: flex; align-items: center; gap: 10px; }
+    .testimonial-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: var(--brown); display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-weight: 700; font-size: 14px;
+    }
+    .testimonial-author strong { font-size: 13px; color: var(--brown); display: block; }
+    .testimonial-author span { font-size: 11px; color: var(--gray); }
+
+    /* ── CONTACT ── */
+    .contact { background: white; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 48px; }
+    .contact-info { display: flex; flex-direction: column; gap: 24px; }
+    .contact-item { display: flex; gap: 16px; align-items: flex-start; }
+    .contact-item-icon {
+      width: 46px; height: 46px; flex-shrink: 0;
+      background: var(--cream2); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; font-size: 20px;
+    }
+    .contact-item h4 { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); margin-bottom: 4px; }
+    .contact-item p { font-size: 15px; color: var(--brown); font-weight: 400; line-height: 1.6; }
+    .contact-item a { color: var(--brown); text-decoration: none; }
+    .contact-item a:hover { color: var(--gold); }
+
+    .map-embed {
+      border-radius: 12px; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(44,24,16,0.1);
+      margin-top: 24px;
+    }
+    .map-embed iframe { width: 100%; height: 220px; border: none; display: block; }
+
+    /* Contact Form */
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--brown); font-weight: 700; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      border: 1.5px solid var(--cream2);
+      border-radius: 7px; padding: 12px 15px;
+      font-size: 14px; font-family: 'Lato', sans-serif;
+      outline: none; background: var(--cream);
+      color: var(--text); transition: border 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--gold); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-submit {
+      background: var(--brown); color: white;
+      border: none; border-radius: 7px;
+      padding: 15px; font-size: 14px; font-weight: 700;
+      cursor: pointer; font-family: 'Lato', sans-serif;
+      letter-spacing: 0.5px; text-transform: uppercase;
+      transition: all 0.2s;
+    }
+    .form-submit:hover { background: var(--brown2); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(44,24,16,0.25); }
+    .form-note { font-size: 12px; color: var(--gray); }
+    .form-success {
+      display: none;
+      background: #f0fdf4; border: 1px solid #86efac;
+      border-radius: 8px; padding: 16px;
+      font-size: 14px; color: #166534; text-align: center;
+    }
+
+    /* ── BOOKING ── */
+    .booking { background: linear-gradient(135deg, var(--brown), var(--brown2)); padding: 90px 40px; }
+    .booking-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; max-width: 1100px; margin: 0 auto; }
+    .booking-steps { display: flex; flex-direction: column; gap: 20px; }
+    .booking-step { display: flex; gap: 16px; align-items: flex-start; }
+    .step-num {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--gold); color: var(--brown);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 15px; flex-shrink: 0;
+    }
+    .booking-step strong { color: white; font-size: 14px; display: block; margin-bottom: 3px; }
+    .booking-step p { color: rgba(255,255,255,0.55); font-size: 13px; line-height: 1.5; }
+
+    .calendly-placeholder {
+      background: white; border-radius: 16px; padding: 24px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .calendly-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #f0ece8; }
+    .calendly-logo { width: 42px; height: 42px; background: var(--cream2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+    .calendly-month { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; font-weight: 700; color: var(--brown); font-size: 14px; }
+    .cal-nav { background: none; border: 1px solid #e8e0d8; border-radius: 6px; width: 28px; height: 28px; cursor: pointer; color: var(--brown); font-size: 16px; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+    .cal-nav:hover { background: var(--brown); color: white; }
+    .calendly-days-header { display: grid; grid-template-columns: repeat(7,1fr); text-align: center; margin-bottom: 8px; }
+    .calendly-days-header span { font-size: 11px; color: #aaa; font-weight: 700; padding: 4px 0; }
+    .calendly-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 4px; margin-bottom: 16px; }
+    .cal-day, .cal-empty { height: 34px; display: flex; align-items: center; justify-content: center; font-size: 13px; border-radius: 8px; }
+    .cal-day { color: #ccc; cursor: default; }
+    .cal-day.available { color: var(--brown); font-weight: 700; cursor: pointer; transition: all 0.15s; }
+    .cal-day.available:hover { background: var(--cream2); }
+    .cal-day.selected { background: var(--brown) !important; color: white !important; }
+    .time-slots { display: flex; flex-wrap: wrap; gap: 8px; }
+    .time-slot {
+      background: var(--cream); border: 1.5px solid var(--cream2);
+      border-radius: 8px; padding: 8px 14px; font-size: 13px;
+      color: var(--brown); cursor: pointer; font-family: 'Lato', sans-serif;
+      font-weight: 700; transition: all 0.15s;
+    }
+    .time-slot:hover, .time-slot.selected { background: var(--brown); color: white; border-color: var(--brown); }
+    .calendly-times { margin-bottom: 16px; }
+    .calendly-success { background: #f0fdf4; border: 1px solid #86efac; border-radius: 8px; padding: 14px; font-size: 13px; color: #166534; text-align: center; margin-top: 12px; }
+    @media (max-width: 768px) { .booking-inner { grid-template-columns: 1fr; } }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--brown);
+      padding: 48px 40px 24px;
+    }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 40px; }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold); font-size: 24px; font-weight: 800; margin-bottom: 12px;
+    }
+    .footer-logo span { display: block; color: rgba(255,255,255,0.4); font-size: 10px; font-family: 'Lato', sans-serif; letter-spacing: 3px; font-weight: 300; margin-top: 2px; }
+    .footer-desc { color: rgba(255,255,255,0.5); font-size: 13px; line-height: 1.8; max-width: 280px; }
+    .footer-col h4 { color: var(--gold); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+    .footer-col a { display: block; color: rgba(255,255,255,0.55); font-size: 13px; text-decoration: none; margin-bottom: 10px; transition: color 0.2s; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 20px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-bottom p { color: rgba(255,255,255,0.3); font-size: 12px; }
+    .footer-bottom a { color: rgba(255,255,255,0.3); font-size: 12px; text-decoration: none; }
+    .footer-bottom a:hover { color: rgba(255,255,255,0.6); }
+
+    /* ── CHAT WIDGET ── */
+    #chat-bubble {
+      position: fixed; bottom: 28px; right: 28px;
+      width: 62px; height: 62px;
+      background: linear-gradient(135deg, var(--brown), var(--brown2));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 24px rgba(44,24,16,0.5);
+      z-index: 999; transition: transform 0.2s, box-shadow 0.2s;
+      border: none;
+    }
+    #chat-bubble:hover { transform: scale(1.08); box-shadow: 0 8px 32px rgba(44,24,16,0.6); }
+    #chat-bubble.open { background: #666; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+
+    /* WhatsApp button */
+    #whatsapp-btn {
+      position: fixed; bottom: 102px; right: 28px;
+      width: 52px; height: 52px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 997;
+      box-shadow: 0 4px 16px rgba(37,211,102,0.45);
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: fadeUp 0.5s 0.3s ease both;
+    }
+    #whatsapp-btn:hover { transform: scale(1.1); box-shadow: 0 6px 24px rgba(37,211,102,0.6); }
+    .whatsapp-tooltip {
+      position: absolute; right: 62px;
+      background: white; color: #1a1a1a;
+      font-size: 12px; font-weight: 600;
+      padding: 6px 12px; border-radius: 20px;
+      white-space: nowrap;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    #whatsapp-btn:hover .whatsapp-tooltip { opacity: 1; }
+
+    .notif-dot {
+      position: absolute; top: 3px; right: 3px;
+      width: 14px; height: 14px; background: var(--gold);
+      border-radius: 50%; border: 2px solid white;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot { 0%,100%{transform:scale(1);} 50%{transform:scale(1.3);} }
+
+    #chat-window {
+      position: fixed; bottom: 106px; right: 28px;
+      width: 370px; border-radius: 20px; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+      z-index: 998; display: flex; flex-direction: column;
+      transform: scale(0.85) translateY(20px);
+      opacity: 0; pointer-events: none;
+      transform-origin: bottom right;
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    #chat-window.open { transform: scale(1) translateY(0); opacity: 1; pointer-events: all; }
+
+    .cw-header {
+      background: linear-gradient(135deg, var(--brown), var(--brown2));
+      padding: 16px 18px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .cw-header-left { display: flex; align-items: center; gap: 12px; }
+    .cw-avatar {
+      width: 40px; height: 40px;
+      background: rgba(201,164,90,0.2); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; border: 1px solid rgba(201,164,90,0.3);
+    }
+    .cw-header h3 { color: white; font-size: 14px; font-weight: 700; font-family: 'Playfair Display', serif; }
+    .cw-header p { color: rgba(255,255,255,0.6); font-size: 11px; margin-top: 2px; display: flex; align-items: center; gap: 4px; }
+    .status-dot { width: 6px; height: 6px; background: #4ade80; border-radius: 50%; display: inline-block; box-shadow: 0 0 5px rgba(74,222,128,0.8); }
+    .cw-close {
+      background: rgba(255,255,255,0.1); border: none; border-radius: 7px;
+      width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: white; transition: background 0.15s;
+    }
+    .cw-close:hover { background: rgba(255,255,255,0.25); }
+
+    .cw-messages {
+      background: #faf7f4; flex: 1; overflow-y: auto;
+      padding: 16px; display: flex; flex-direction: column; gap: 12px;
+      min-height: 300px; max-height: 360px;
+    }
+    .cw-messages::-webkit-scrollbar { width: 3px; }
+    .cw-messages::-webkit-scrollbar-thumb { background: #ddd; border-radius: 3px; }
+
+    .welcome { text-align: center; padding: 10px 4px; }
+    .welcome-icon {
+      width: 54px; height: 54px;
+      background: linear-gradient(135deg, var(--brown), var(--brown2));
+      border-radius: 15px; display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 12px; font-size: 24px;
+      box-shadow: 0 6px 16px rgba(44,24,16,0.3);
+    }
+    .welcome h4 { font-size: 15px; color: var(--brown); margin-bottom: 6px; font-weight: 700; font-family: 'Playfair Display', serif; }
+    .welcome p { font-size: 12px; color: #999; line-height: 1.6; margin-bottom: 16px; }
+    .suggestions { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+    .sugg-btn {
+      background: white; border: 1.5px solid #e8ddd4; border-radius: 16px;
+      padding: 6px 11px; font-size: 11.5px; color: #555; cursor: pointer;
+      transition: all 0.15s; font-family: 'Lato', sans-serif;
+    }
+    .sugg-btn:hover { border-color: var(--brown); color: var(--brown); background: #f5f0eb; }
+
+    .msg-row { display: flex; align-items: flex-end; gap: 6px; animation: fadeUp2 0.2s ease; }
+    @keyframes fadeUp2 { from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);} }
+    .msg-row.user { justify-content: flex-end; }
+    .msg-row.bot { justify-content: flex-start; }
+
+    .avatar {
+      width: 26px; height: 26px;
+      background: linear-gradient(135deg, var(--brown), var(--brown2));
+      border-radius: 7px; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 13px;
+    }
+
+    .bubble { max-width: 78%; padding: 9px 13px; font-size: 13px; line-height: 1.65; }
+    .bubble.user {
+      background: var(--brown); color: white;
+      border-radius: 16px 16px 4px 16px;
+      box-shadow: 0 2px 8px rgba(44,24,16,0.25);
+    }
+    .bubble.bot {
+      background: white; color: var(--text);
+      border-radius: 16px 16px 16px 4px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+      border: 1px solid #ede8e2;
+    }
+    .bubble.bot strong { font-weight: 700; color: var(--brown); }
+    .bubble.bot ul { padding-left: 16px; margin: 5px 0; }
+    .bubble.bot li { margin: 3px 0; }
+    .bubble.bot p { margin: 4px 0; }
+    .bubble.bot p:first-child { margin-top: 0; }
+    .bubble.bot p:last-child { margin-bottom: 0; }
+
+    .chat-link {
+      display: inline-flex; align-items: center; gap: 4px;
+      background: #f5f0eb; border: 1.5px solid #d4c4b0;
+      color: var(--brown); border-radius: 16px;
+      padding: 4px 11px; font-size: 11.5px; font-weight: 700;
+      text-decoration: none; margin: 2px 2px;
+      transition: all 0.15s; font-family: 'Lato', sans-serif;
+    }
+    .chat-link:hover { background: var(--brown); color: white; border-color: var(--brown); }
+    .chat-link::after { content: " ↗"; font-size: 9px; opacity: 0.7; }
+
+    .typing { display: flex; gap: 4px; padding: 2px; }
+    .typing span {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold); opacity: 0.5;
+      animation: blink 1.2s ease-in-out infinite;
+    }
+    .typing span:nth-child(2) { animation-delay: 0.2s; }
+    .typing span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes blink { 0%,60%,100%{transform:translateY(0);opacity:0.4;} 30%{transform:translateY(-5px);opacity:1;} }
+
+    .cw-input {
+      background: white; border-top: 1px solid #ede8e2;
+      padding: 12px 14px; display: flex; gap: 8px; align-items: center;
+    }
+    .cw-input input {
+      flex: 1; border: 1.5px solid #e8ddd4; border-radius: 22px;
+      padding: 9px 15px; font-size: 13px; outline: none;
+      background: #faf7f4; font-family: 'Lato', sans-serif; transition: border 0.2s;
+    }
+    .cw-input input:focus { border-color: var(--brown); }
+    .cw-input input::placeholder { color: #bbb; }
+    .cw-send {
+      background: var(--brown); border: none; border-radius: 50%;
+      width: 38px; height: 38px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; flex-shrink: 0; transition: all 0.15s;
+      box-shadow: 0 2px 8px rgba(44,24,16,0.3);
+    }
+    .cw-send:disabled { background: #e0d8d0; box-shadow: none; cursor: default; }
+    .cw-send:not(:disabled):hover { background: var(--brown2); transform: scale(1.06); }
+    .cw-footer {
+      background: white; text-align: center; padding: 7px;
+      font-size: 10px; color: #ccc; border-top: 1px solid #f4f0ec;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 60px 20px; }
+      .about-grid, .contact-grid, .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .stats-bar { grid-template-columns: repeat(2,1fr); }
+      .kitchen-grid { grid-template-columns: 1fr; }
+      .kitchen-card:first-child { grid-row: span 1; }
+      .kitchen-card:first-child .kitchen-img { height: 280px; }
+      .materials-grid { grid-template-columns: repeat(2,1fr); }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      #chat-window { width: calc(100vw - 20px); right: 10px; bottom: 90px; }
+      #chat-bubble { right: 16px; bottom: 16px; }
+      #whatsapp-btn { right: 16px; bottom: 90px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav>
+  <div class="nav-logo">
+    Cardon
+    <span>Keukens & Zonen</span>
+  </div>
+  <div class="nav-links">
+    <a href="#over-ons">Over ons</a>
+    <a href="#keukens">Keukens</a>
+    <a href="#diensten">Diensten</a>
+    <a href="#realisaties">Realisaties</a>
+    <a href="#afspraak" class="nav-cta">Afspraak maken</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <span class="hero-tag">✦ Nieuwerkerken-Aalst · Sinds 1984</span>
+    <h1>Uw droomkeuken,<br><em>vakkundig op maat</em><br>gemaakt</h1>
+    <p>Meer dan 40 jaar familiebedrijf in Oost-Vlaanderen.<br>Van ontwerp tot perfecte realisatie — wij zorgen voor uw ideale keuken.</p>
+    <div class="hero-btns">
+      <a href="#keukens" class="btn-primary">Onze realisaties bekijken</a>
+      <a href="#afspraak" class="btn-outline">Gratis afspraak maken</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">40+</div><div class="stat-label">Jaar ervaring</div></div>
+  <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Tevreden klanten</div></div>
+  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Op maat</div></div>
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">Afwerkingen</div></div>
+</div>
+
+<!-- ── ABOUT ── -->
+<section class="about" id="over-ons">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img">
+        <img src="https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=800&q=80" alt="Keukens Cardon showroom"/>
+        <div class="about-img-badge">
+          <strong>40+</strong>
+          jaar vakmanschap
+        </div>
+      </div>
+      <div>
+        <span class="section-tag">✦ Over ons</span>
+        <h2 class="section-title">Een familieverhaal vol<br>passie voor keukens</h2>
+        <p class="section-sub">Keukens Cardon & Zonen is een familiebedrijf gevestigd in het hart van Nieuwerkerken, vlakbij Aalst. Al meer dan 40 jaar realiseren wij keukens op maat met oog voor vakmanschap, kwaliteit en persoonlijke service.</p>
+        <div class="about-features">
+          <div class="about-feature">
+            <div class="about-feature-icon">🏆</div>
+            <div>
+              <h4>Enkel de beste materialen</h4>
+              <p>Wij werken uitsluitend met premium materialen en de meest gerenommeerde keukenmerken.</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">✏️</div>
+            <div>
+              <h4>Persoonlijk ontwerp</h4>
+              <p>Elk project begint met een gratis gesprek. Uw wensen en ruimte zijn ons vertrekpunt.</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">🤝</div>
+            <div>
+              <h4>Correcte afspraken</h4>
+              <p>Duidelijke communicatie, eerlijke prijzen en nakomen van wat we beloven — altijd.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── KITCHENS ── -->
+<section class="kitchens" id="keukens">
+  <div class="container">
+    <div class="kitchens-header">
+      <div>
+        <span class="section-tag">✦ Onze keukenstijlen</span>
+        <h2 class="section-title">Een stijl voor<br>elke smaak</h2>
+      </div>
+      <a href="#afspraak" class="btn-primary" style="white-space:nowrap">Afspraak maken →</a>
+    </div>
+    <div class="kitchen-grid">
+      <div class="kitchen-card">
+        <div class="kitchen-img-wrap">
+          <img class="kitchen-img" src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80" alt="Moderne keuken"/>
+        </div>
+        <div class="kitchen-body">
+          <span class="kitchen-style">Meest gevraagd</span>
+          <h3>Modern & Greeploos</h3>
+          <p>Strakke lijnen, verborgen grepen en een tijdloos design. Perfect voor wie van rust en elegantie houdt.</p>
+        </div>
+      </div>
+      <div class="kitchen-card">
+        <div class="kitchen-img-wrap">
+          <img class="kitchen-img" src="https://images.unsplash.com/photo-1588854337236-6889d631faa8?w=800&q=80" alt="Klassieke keuken"/>
+        </div>
+        <div class="kitchen-body">
+          <span class="kitchen-style">Tijdloos</span>
+          <h3>Klassiek</h3>
+          <p>Warm karakter met traditionele details en hoogwaardige afwerking.</p>
+        </div>
+      </div>
+      <div class="kitchen-card">
+        <div class="kitchen-img-wrap">
+          <img class="kitchen-img" src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&q=80" alt="Cottage keuken"/>
+        </div>
+        <div class="kitchen-body">
+          <span class="kitchen-style">Landelijk</span>
+          <h3>Cottage</h3>
+          <p>Gezellig en authentiek — de keuken als kloppend hart van uw thuis.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MATERIALS ── -->
+<section class="materials">
+  <div class="container">
+    <span class="section-tag">✦ Materialen & afwerking</span>
+    <h2 class="section-title">Keuze uit 7 premium<br>afwerkingen</h2>
+    <p class="section-sub">Elke keuken is anders. Wij bieden een ruime keuze aan materialen zodat uw keuken perfect aansluit bij uw interieur.</p>
+    <div class="materials-grid">
+      <div class="material-card"><div class="material-icon">🪵</div><h4>Massief hout</h4><p>Warm, natuurlijk en tijdloos. Het meest authentieke materiaal.</p></div>
+      <div class="material-card"><div class="material-icon">🌿</div><h4>Fineer</h4><p>Natuurlijk houtlook met uitstekende duurzaamheid.</p></div>
+      <div class="material-card"><div class="material-icon">✨</div><h4>Poederlak</h4><p>Strak en modern, verkrijgbaar in elke RAL-kleur.</p></div>
+      <div class="material-card"><div class="material-icon">🪞</div><h4>Satinlak</h4><p>Zijdeachtige glans voor een luxueuze uitstraling.</p></div>
+      <div class="material-card"><div class="material-icon">🏔️</div><h4>Microstructuurlak</h4><p>Subtiele textuur, mat en stijlvol.</p></div>
+      <div class="material-card"><div class="material-icon">🎨</div><h4>Laminaat</h4><p>Zeer robuust en beschikbaar in talloze decors.</p></div>
+      <div class="material-card"><div class="material-icon">⬜</div><h4>Melamine</h4><p>Betaalbaar en kwalitatief, ideaal voor elke stijl.</p></div>
+      <div class="material-card" onclick="openChat()" style="background:rgba(201,164,90,0.1);border-color:rgba(201,164,90,0.4);cursor:pointer;">
+        <div class="material-icon">💬</div>
+        <h4 style="color:var(--gold)">Welk materiaal past bij u?</h4>
+        <p>Vraag het onze assistent of kom langs in onze toonzaal!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section class="services" id="diensten">
+  <div class="container">
+    <span class="section-tag">✦ Onze diensten</span>
+    <h2 class="section-title">Alles in één hand</h2>
+    <p class="section-sub">Van het eerste gesprek tot de laatste schroef — wij begeleiden u door het volledige proces.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🍳</div>
+        <h3>Keukens op maat</h3>
+        <p>Wij ontwerpen en realiseren uw keuken van A tot Z. Afgestemd op uw ruimte, stijl en budget. Meer dan 40 jaar expertise.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚪</div>
+        <h3>Kasten op maat</h3>
+        <p>Inbouwkasten, dressings en opbergruimtes die perfect passen in elke ruimte van uw woning.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚡</div>
+        <h3>Elektro & Sanitair</h3>
+        <p>Keuzeaanbod uit de beste keukenapparaten van alle bekende merken. Deskundig advies inbegrepen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="testimonials" id="realisaties">
+  <div class="container">
+    <span class="section-tag">✦ Wat onze klanten zeggen</span>
+    <h2 class="section-title">Honderden tevreden<br>klanten gingen u voor</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>"Onze keuken is precies zoals we het ons hadden voorgesteld. Professionele service van begin tot einde. Absoluut aanrader!"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">LV</div>
+          <div><strong>Lien Van Damme</strong><span>Aalst</span></div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>"Al 15 jaar geleden hebben wij onze keuken bij Cardon laten plaatsen. Nu opnieuw — zelfde kwaliteit, zelfde vriendelijkheid."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">PD</div>
+          <div><strong>Peter De Smedt</strong><span>Dendermonde</span></div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>"Vakkundig advies, mooie materialen en perfecte afwerking. Wij zijn super tevreden met onze nieuwe cottage keuken!"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">AN</div>
+          <div><strong>An Nijs</strong><span>Nieuwerkerken</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BOOKING ── -->
+<section class="booking" id="afspraak">
+  <div class="booking-inner">
+    <div class="booking-left">
+      <span class="section-tag">✦ Online afspraak maken</span>
+      <h2 class="section-title" style="color:white">Kies uw moment,<br>wij zorgen voor de rest</h2>
+      <p style="color:rgba(255,255,255,0.7);font-size:15px;line-height:1.8;max-width:420px;margin-bottom:32px">Boek direct een vrijblijvend gesprek in onze toonzaal. Kies een datum — u ontvangt automatisch een bevestiging per e-mail.</p>
+      <div class="booking-steps">
+        <div class="booking-step">
+          <div class="step-num">1</div>
+          <div><strong>Kies een datum</strong><p>Selecteer een dag en tijdstip in de kalender</p></div>
+        </div>
+        <div class="booking-step">
+          <div class="step-num">2</div>
+          <div><strong>Vul uw gegevens in</strong><p>Naam, e-mail en een korte omschrijving van uw project</p></div>
+        </div>
+        <div class="booking-step">
+          <div class="step-num">3</div>
+          <div><strong>Ontvang bevestiging</strong><p>Automatische e-mail met alle details van uw afspraak</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="booking-right">
+      <div class="calendly-placeholder">
+        <div class="calendly-header">
+          <div class="calendly-logo">📅</div>
+          <div>
+            <div style="font-weight:700;color:#2c1810;font-size:15px">Keukens Cardon & Zonen</div>
+            <div style="font-size:12px;color:#888;margin-top:2px">Toonzaalbezoek · 60 min · Gratis</div>
+          </div>
+        </div>
+        <div class="calendly-month">
+          <button class="cal-nav">‹</button>
+          <span>Maart 2026</span>
+          <button class="cal-nav">›</button>
+        </div>
+        <div class="calendly-days-header">
+          <span>Ma</span><span>Di</span><span>Wo</span><span>Do</span><span>Vr</span><span>Za</span><span>Zo</span>
+        </div>
+        <div class="calendly-grid">
+          <span class="cal-empty"></span><span class="cal-empty"></span><span class="cal-empty"></span><span class="cal-empty"></span><span class="cal-empty"></span>
+          <span class="cal-day available" onclick="selectDay(this)">1</span>
+          <span class="cal-day">2</span>
+          <span class="cal-day available" onclick="selectDay(this)">3</span>
+          <span class="cal-day available" onclick="selectDay(this)">4</span>
+          <span class="cal-day available" onclick="selectDay(this)">5</span>
+          <span class="cal-day available" onclick="selectDay(this)">6</span>
+          <span class="cal-day available" onclick="selectDay(this)">7</span>
+          <span class="cal-day">9</span>
+          <span class="cal-day available" onclick="selectDay(this)">10</span>
+          <span class="cal-day available" onclick="selectDay(this)">11</span>
+          <span class="cal-day available" onclick="selectDay(this)">12</span>
+          <span class="cal-day available" onclick="selectDay(this)">13</span>
+          <span class="cal-day available" onclick="selectDay(this)">14</span>
+          <span class="cal-day">16</span>
+          <span class="cal-day available" onclick="selectDay(this)">17</span>
+          <span class="cal-day available" onclick="selectDay(this)">18</span>
+          <span class="cal-day available" onclick="selectDay(this)">19</span>
+          <span class="cal-day available" onclick="selectDay(this)">20</span>
+          <span class="cal-day available" onclick="selectDay(this)">21</span>
+        </div>
+        <div class="calendly-times" id="timeSlots" style="display:none">
+          <div style="font-size:12px;color:#888;margin-bottom:10px">Beschikbare tijden:</div>
+          <div class="time-slots">
+            <button class="time-slot" onclick="selectTime(this)">09:00</button>
+            <button class="time-slot" onclick="selectTime(this)">10:30</button>
+            <button class="time-slot" onclick="selectTime(this)">13:00</button>
+            <button class="time-slot" onclick="selectTime(this)">14:30</button>
+            <button class="time-slot" onclick="selectTime(this)">16:00</button>
+          </div>
+        </div>
+        <div id="confirmBtn" style="display:none;margin-top:14px">
+          <button class="btn-primary" style="width:100%" onclick="showConfirm()">Bevestig afspraak →</button>
+        </div>
+        <div class="calendly-success" id="calSuccess" style="display:none">
+          ✅ Afspraak aangevraagd! U ontvangt een bevestiging per e-mail.
+        </div>
+        <div style="text-align:center;margin-top:14px;font-size:11px;color:#bbb">
+          🔒 Gratis · Vrijblijvend · Geen verplichtingen
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="contact" id="contact">
+  <div class="container">
+    <span class="section-tag">✦ Contact & vragen</span>
+    <h2 class="section-title">Heeft u een vraag?<br>Wij helpen u graag</h2>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div><h4>Adres</h4><p>Dries 12<br>9320 Nieuwerkerken-Aalst</p></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div><h4>Telefoon</h4><p><a href="tel:053840025">053 84.00.25</a></p></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div><h4>E-mail</h4><p><a href="/cdn-cgi/l/email-protection#3259574759575c411c515340565d5c1c485d5c575c7246575e575c57461c5057"><span class="__cf_email__" data-cfemail="fd9698889698938ed39e9c8f999293d38792939893bd89989198939889d39f98">[email&#160;protected]</span></a></p></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🕐</div>
+            <div><h4>Openingsuren</h4><p>Maandag t/m zaterdag<br>Open op afspraak<br>Zondag & feestdagen: gesloten</p></div>
+          </div>
+        </div>
+        <div class="map-embed">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2503.1!2d4.0213!3d50.9412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3d6a1b1b1b1b1%3A0x0!2sDries%2012%2C%209320%20Nieuwerkerken!5e0!3m2!1snl!2sbe!4v1700000000000!5m2!1snl!2sbe"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+      <div>
+        <div class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Voornaam *</label>
+              <input type="text" placeholder="Jan"/>
+            </div>
+            <div class="form-group">
+              <label>Achternaam *</label>
+              <input type="text" placeholder="Janssen"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>E-mailadres *</label>
+            <input type="email" placeholder="jan@email.be"/>
+          </div>
+          <div class="form-group">
+            <label>Telefoonnummer</label>
+            <input type="tel" placeholder="0479 00 00 00"/>
+          </div>
+          <div class="form-group">
+            <label>Ik ben geïnteresseerd in</label>
+            <select>
+              <option>Keuken op maat</option>
+              <option>Kast op maat</option>
+              <option>Elektro & Sanitair</option>
+              <option>Renovatie bestaande keuken</option>
+              <option>Vrijblijvend advies</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Uw bericht</label>
+            <textarea placeholder="Vertel ons meer over uw project, uw wensen of wanneer u wenst langs te komen..."></textarea>
+          </div>
+          <p class="form-note">* Verplichte velden. Wij contacteren u binnen 1 werkdag.</p>
+          <button class="form-submit" onclick="submitForm()">Stuur uw aanvraag →</button>
+          <div class="form-success" id="formSuccess">
+            ✅ Bedankt! We contacteren u zo snel mogelijk.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Cardon <span>Keukens & Zonen</span></div>
+        <p class="footer-desc">Familiebedrijf met meer dan 40 jaar ervaring in keukens en kasten op maat. Gevestigd in Nieuwerkerken-Aalst, Oost-Vlaanderen.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigatie</h4>
+        <a href="#over-ons">Over ons</a>
+        <a href="#keukens">Keukens</a>
+        <a href="#diensten">Diensten</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:053840025">053 84.00.25</a>
+        <a href="/cdn-cgi/l/email-protection#a8c3cdddc3cdc6db86cbc9daccc7c686d2c7c6cdc6e8dccdc4cdc6cddc86cacd"><span class="__cf_email__" data-cfemail="3d5658485658534e135e5c4f5952531347525358537d49585158535849135f58">[email&#160;protected]</span></a>
+        <a href="#">Dries 12, 9320 Nieuwerkerken</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Keukens Cardon & Zonen · BE 0425 005 203</p>
+      <a href="#">Privacyverklaring</a>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Button -->
+<a id="whatsapp-btn"
+   href="https://wa.me/3253840025?text=Hallo%2C%20ik%20heb%20een%20vraag%20over%20een%20keuken%20op%20maat."
+   target="_blank" title="Chat op WhatsApp">
+  <span class="whatsapp-tooltip">Chat op WhatsApp</span>
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- Chat bubble -->
+<button id="chat-bubble" onclick="toggleChat()" title="Stel ons een vraag">
+  <div class="notif-dot" id="notifDot"></div>
+  <svg id="icon-chat" width="26" height="26" viewBox="0 0 24 24" fill="none">
+    <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <svg id="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" style="display:none">
+    <path d="M18 6L6 18M6 6l12 12" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  </svg>
+</button>
+
+<div id="chat-window">
+  <div class="cw-header">
+    <div class="cw-header-left">
+      <div class="cw-avatar">🍳</div>
+      <div>
+        <h3>Cardon Assistent</h3>
+        <p><span class="status-dot"></span> Online · Nieuwerkerken</p>
+      </div>
+    </div>
+    <button class="cw-close" onclick="toggleChat()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+        <path d="M18 6L6 18M6 6l12 12" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+  <div class="cw-messages" id="chatArea">
+    <div class="welcome" id="welcome">
+      <div class="welcome-icon">🍳</div>
+      <h4>Welkom bij Keukens Cardon! 👋</h4>
+      <p>Stel uw vraag over keukens,<br>materialen, prijzen of een afspraak.</p>
+      <div class="suggestions">
+        <button class="sugg-btn" onclick="send('Welke keukenstijlen hebben jullie?')">🎨 Keukenstijlen</button>
+        <button class="sugg-btn" onclick="send('Hoe maak ik een afspraak?')">📅 Afspraak</button>
+        <button class="sugg-btn" onclick="send('Wat zijn de openingsuren?')">🕐 Openingsuren</button>
+        <button class="sugg-btn" onclick="send('Welke materialen gebruiken jullie?')">🪵 Materialen</button>
+        <button class="sugg-btn" onclick="send('Doen jullie ook kasten op maat?')">🚪 Kasten</button>
+        <button class="sugg-btn" onclick="send('Waar zijn jullie?')">📍 Locatie</button>
+      </div>
+    </div>
+  </div>
+  <div class="cw-input">
+    <input type="text" id="userInput" placeholder="Stel uw vraag..." onkeydown="if(event.key==='Enter') send()"/>
+    <button class="cw-send" id="sendBtn" onclick="send()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+        <path d="M22 2L11 13M22 2L15 22L11 13L2 9L22 2Z" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+  <div class="cw-footer">Powered by AI · Keukens Cardon & Zonen</div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ============================================================
+// 🔑 PASTE YOUR API KEY HERE
+// ============================================================
+const API_KEY = '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';
+
+const SYSTEM = `U bent een vriendelijke assistent voor Keukens Cardon & Zonen, een familiebedrijf in Nieuwerkerken-Aalst met meer dan 40 jaar ervaring.
+
+OPMAAKREGELS:
+- Zet links op een aparte regel: LINK: https://url | Knoptekst
+- Gebruik **vet** voor sleuteltermen
+- Warm, vriendelijk en professioneel
+- Antwoord in de taal van de klant (NL/FR/EN)
+
+=== CONTACT ===
+- Adres: Dries 12, 9320 Nieuwerkerken-Aalst
+- Tel: 053 84.00.25
+- Email: keukens.cardon.zonen@telenet.be
+LINK: https://keukenscardon.be/contact.php | 📞 Afspraak aanvragen
+
+=== OPENINGSUREN ===
+Ma t/m Za: open op afspraak. Zo & feestdagen: gesloten.
+
+=== KEUKENSTIJLEN ===
+Modern, Greeploos, Klassiek, Cottage
+LINK: https://keukenscardon.be/keukens.php | 🍳 Keukens bekijken
+
+=== MATERIALEN ===
+Massief, Fineer, Poederlak, Satinlak, Microstructuurlak, Laminaat, Melamine
+
+=== DIENSTEN ===
+Keukens op maat, Kasten op maat, Elektro & Sanitair
+LINK: https://keukenscardon.be/kastenopmaat.php | 🚪 Kasten op maat
+LINK: https://keukenscardon.be/elektro-sani.php | ⚡ Elektro & Sanitair
+
+=== LOCATIE ===
+Nieuwerkerken, vlakbij Aalst, Oost-Vlaanderen
+LINK: https://maps.google.com/?q=Dries+12+9320+Nieuwerkerken | 📍 Route plannen
+
+=== PRIJZEN ===
+Alles op maat — geen vaste prijzen. Altijd een gratis afspraak voor offerte.`;
+
+let history = [], loading = false, isOpen = false;
+
+function openChat() {
+  if (!isOpen) toggleChat();
+}
+
+function toggleChat() {
+  isOpen = !isOpen;
+  document.getElementById('chat-window').classList.toggle('open', isOpen);
+  document.getElementById('chat-bubble').classList.toggle('open', isOpen);
+  document.getElementById('icon-chat').style.display = isOpen ? 'none' : 'block';
+  document.getElementById('icon-close').style.display = isOpen ? 'block' : 'none';
+  if (isOpen) {
+    document.getElementById('notifDot').style.display = 'none';
+    setTimeout(() => document.getElementById('userInput').focus(), 300);
+  }
+}
+
+function formatMessage(text) {
+  let html = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  html = html.replace(/LINK:\s*(https?:\/\/[^\s|<]+)\s*\|\s*([^\n<]+)/g,
+    (_,url,label) => `<a class="chat-link" href="${url.trim()}" target="_blank">${label.trim()}</a>`);
+  html = html.replace(/\*\*([^*\n]+)\*\*/g,'<strong>$1</strong>');
+  html = html.replace(/(?<!href=")(https?:\/\/[^\s<&]+)/g, url =>
+    `<a class="chat-link" href="${url.replace(/[.,)>]+$/, '')}" target="_blank">Open pagina</a>`);
+  const lines = html.split('\n');
+  let result = [], inList = false;
+  for (let line of lines) {
+    if (/^[-•]\s+/.test(line.trim()) || /^\d+\.\s+/.test(line.trim())) {
+      if (!inList) { result.push('<ul>'); inList = true; }
+      result.push('<li>' + line.trim().replace(/^[-•]\s+/,'').replace(/^\d+\.\s+/,'') + '</li>');
+    } else {
+      if (inList) { result.push('</ul>'); inList = false; }
+      result.push(line);
+    }
+  }
+  if (inList) result.push('</ul>');
+  html = result.join('\n').split(/\n\n+/).map(p => p.trim() ? `<p>${p.replace(/\n/g,'<br>')}</p>` : '').join('');
+  return html;
+}
+
+function addMessage(role, text) {
+  document.getElementById('welcome')?.remove();
+  const chat = document.getElementById('chatArea');
+  const row = document.createElement('div');
+  row.className = `msg-row ${role==='user'?'user':'bot'}`;
+  if (role === 'assistant') {
+    const av = document.createElement('div');
+    av.className = 'avatar'; av.textContent = '🍳';
+    row.appendChild(av);
+  }
+  const bubble = document.createElement('div');
+  bubble.className = `bubble ${role==='user'?'user':'bot'}`;
+  bubble.innerHTML = role==='user' ? text.replace(/</g,'&lt;') : formatMessage(text);
+  row.appendChild(bubble);
+  chat.appendChild(row);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+function addTyping() {
+  document.getElementById('welcome')?.remove();
+  const chat = document.getElementById('chatArea');
+  const row = document.createElement('div');
+  row.className = 'msg-row bot'; row.id = 'typing-row';
+  const av = document.createElement('div'); av.className = 'avatar'; av.textContent = '🍳';
+  row.appendChild(av);
+  const b = document.createElement('div'); b.className = 'bubble bot';
+  b.innerHTML = '<div class="typing"><span></span><span></span><span></span></div>';
+  row.appendChild(b); chat.appendChild(row); chat.scrollTop = chat.scrollHeight;
+}
+
+async function send(text) {
+  const q = text || document.getElementById('userInput').value.trim();
+  if (!q || loading) return;
+  if (!API_KEY || API_KEY === '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') {
+    addMessage('assistant','⚙️ API key ontbreekt. Voeg uw sleutel toe in de code.'); return;
+  }
+  document.getElementById('userInput').value = '';
+  loading = true; document.getElementById('sendBtn').disabled = true;
+  addMessage('user', q); history.push({role:'user',content:q}); addTyping();
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-api-key':API_KEY,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYSTEM,messages:history})
+    });
+    const data = await res.json();
+    document.getElementById('typing-row')?.remove();
+    if (data.error) { addMessage('assistant','❌ Fout: '+data.error.message); history.pop(); }
+    else {
+      const reply = data.content?.[0]?.text || 'Sorry, ik kon niet antwoorden.';
+      history.push({role:'assistant',content:reply}); addMessage('assistant',reply);
+    }
+  } catch { document.getElementById('typing-row')?.remove(); addMessage('assistant','❌ Verbindingsfout.'); history.pop(); }
+  loading = false; document.getElementById('sendBtn').disabled = false;
+}
+
+function selectDay(el) {
+  document.querySelectorAll('.cal-day').forEach(d => d.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('timeSlots').style.display = 'block';
+  document.getElementById('confirmBtn').style.display = 'none';
+  document.querySelectorAll('.time-slot').forEach(t => t.classList.remove('selected'));
+}
+
+function selectTime(el) {
+  document.querySelectorAll('.time-slot').forEach(t => t.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('confirmBtn').style.display = 'block';
+}
+
+function showConfirm() {
+  document.getElementById('confirmBtn').style.display = 'none';
+  document.getElementById('calSuccess').style.display = 'block';
+}
+
+function submitForm() {
+  document.getElementById('formSuccess').style.display = 'block';
+  setTimeout(() => document.getElementById('formSuccess').style.display = 'none', 4000);
+}
+</script>
+</body>
+</html>
